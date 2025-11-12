@@ -1,0 +1,130 @@
+/* Estilos para o corpo da página */
+body {
+  background-image: url('https://th.bing.com/th/id/R.71ce819f3e164b1cdcc92f40e12e6b18?rik=L%2fWW3ooiXmwe%2bw&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f1%2f9%2f3%2f861434-top-anime-background-1920x1080-xiaomi.jpg&ehk=WS7qUKVdVxN6N2cRCOAFZtxYANbgLmpRyeAf1RDxHOc%3d&risl=&pid=ImgRaw&r=0');
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+.carousel-inner img {
+  max-height: 400px; /* Ou o valor que você preferir, como 500px */
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+  margin-bottom: 60px;
+}
+/* Container principal para centralizar o conteúdo */
+.container {
+  width: 90%; /* Ajusta a largura para 90% da tela */
+  max-width: 960px; /* Limita a largura em telas grandes */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Menu de Navegação */
+nav {
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+
+nav ul li {
+  margin: 10px 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+/* Estilos de Botões e Formulários */
+form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+form input,
+form textarea,
+form button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; 
+}
+
+form button {
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Estilos do Cardápio */
+section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(46, 56, 77, 0.1);
+  margin-bottom: 20px;
+}
+
+article {
+  border-left: 5px solid #114766;
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+article h3 {
+  margin-top: 0;
+}
+
+article span {
+  font-weight: bold;
+  color: #712bc0;
+}
+
+/* ==========================================
+  Media Query para Telas Maiores (>= 768px)
+  ==========================================
+*/
+@media (min-width: 768px) {
+  nav ul {
+    flex-direction: row; 
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 0 15px;
+  }
+
+  .cardapio-pratos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .cardapio-pratos article {
+    flex: 1 1 calc(50% - 20px); 
+  }
+   .card {
+    margin-bottom: 60px;
+  }
+}

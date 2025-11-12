@@ -1,0 +1,56 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">Início</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/cardapio">Cardápio</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/reserva/new">Fazer Reserva</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/fale/new">Fale Conosco</a>
+    </li>
+   
+    <!-- Link para PEDIDO (CLIENTE) - Visível se logado, ou se quiser permitir pedidos sem login -->
+    <li class="nav-item">
+        <a class="nav-link" href="/pedido/new">Fazer Pedido</a>
+    </li>
+
+    <!-- NOVO: Link para GERENCIAMENTO DE PEDIDOS (SÓ ADMIN) -->
+    {{#if_eq session.user.tipo "Admin"}}
+        <li class="nav-item">
+            <a class="nav-link text-danger font-weight-bold" href="/pedido/admin">
+                Gerenciar Pedidos (Admin)
+            </a>
+        </li>
+    {{/if_eq}}
+
+    <!-- OPÇÃO: Link para GERENCIAMENTO DE USUÁRIOS (SÓ ADMIN) -->
+    {{#if_eq session.user.tipo "Admin"}}
+        <li class="nav-item">
+            <a class="nav-link text-danger" href="/admin/users">
+                Gerenciar Usuários
+            </a>
+        </li>
+    {{/if_eq}}
+
+    <!-- Condicional LOGIN / LOGOUT -->
+    {{#if session.isLoggedIn}}
+        <!-- Se estiver logado, mostra o nome do usuário e o botão de Sair -->
+        <li class="nav-item ml-auto">
+            <span class="nav-link">Olá, <strong>{{session.user.nome}}</strong> ({{session.user.tipo}})</span>
+        </li>
+        <li class="nav-item">
+            <!-- Logout deve ser um POST, então usamos um mini-form -->
+            <form action="/login/logout" method="POST" class="nav-link p-0">
+                <button type="submit" class="btn btn-sm btn-outline-secondary">Sair</button>
+            </form>
+        </li>
+    {{else}}
+        <!-- Se NÃO estiver logado, mostra o link de Login -->
+        <li class="nav-item ml-auto">
+            <a class="nav-link" href="/login">Login</a>
+        </li>
+    {{/if}}
+</ul>

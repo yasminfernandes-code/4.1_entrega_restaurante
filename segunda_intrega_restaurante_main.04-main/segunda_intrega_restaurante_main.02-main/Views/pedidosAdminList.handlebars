@@ -1,0 +1,51 @@
+<h2>Gerenciamento de Pedidos</h2>
+
+{{#if pedidos}}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Itens</th>
+            <th>Total (R$)</th>
+            <th>Status</th>
+            <th>Data</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each pedidos}}
+        <tr>
+            <td>{{id}}</td>
+            <td><strong>{{nome}}</strong></td>
+            <td>{{itens}}</td>
+            <td>{{total}}</td>
+            <td>
+                {{!-- Formulário para atualizar status --}}
+                <form action="/pedido/status/{{id}}" method="POST" style="display: inline-flex; gap: 5px;">
+                    <select name="status" class="form-control form-control-sm">
+                        <option value="Pendente" {{#if_eq status 'Pendente'}}selected{{/if_eq}}>Pendente</option>
+                        <option value="Em Preparo" {{#if_eq status 'Em Preparo'}}selected{{/if_eq}}>Em Preparo</option>
+                        <option value="Pronto" {{#if_eq status 'Pronto'}}selected{{/if_eq}}>Pronto</option>
+                        <option value="Entregue" {{#if_eq status 'Entregue'}}selected{{/if_eq}}>Entregue</option>
+                        <option value="Cancelado" {{#if_eq status 'Cancelado'}}selected{{/if_eq}}>Cancelado</option>
+                    </select>
+                    <button type="submit" class="btn btn-sm btn-info">Atualizar</button>
+                </form>
+            </td>
+            <td>{{createdAt}}</td>
+            <td>
+                {{!-- Formulário para deletar --}}
+                <form action="/pedido/delete/{{id}}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir o pedido {{id}}?');">
+                    <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p>Nenhum pedido encontrado.</p>
+{{/if}}
+
+{{!-- NOTE: Você precisará de um Helper 'if_eq' para o Handlebars comparar strings --}}
